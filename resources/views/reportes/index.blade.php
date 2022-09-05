@@ -1,0 +1,46 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header p-4">
+                        <h2 class="w-100 text-center text-uppercase fw-bold">{{ __('Ud. gestiona los siguientes reportes') }}</h2>
+                        <div class="text-center">
+                            <a href="{{ route('reporte.create') }}" class="btn btn-outline-info">Crear Reporte</a>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Asunto</th>
+                                <th scope="col">Detalle</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
+                            @forelse($reportes as $reporte)
+                                <tr>
+                                    <th scope="row">{{ $i++  }}</th>
+                                    <td>{{ $reporte->asunto }}</td>
+                                    <td>{{ $reporte->detalle }}</td>
+                                </tr>
+                            @empty
+                                <tr class="text-center">
+                                    <td colspan="3">SIN REGISTROS</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
