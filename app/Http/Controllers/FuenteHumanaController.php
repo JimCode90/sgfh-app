@@ -29,7 +29,7 @@ class FuenteHumanaController extends Controller
             "dni" => $request->dni,
             'id_tipo_perfil' => 2,
             "email" => $request->email,
-            'password' => bcrypt($request->dni),
+            'password' => bcrypt('password'),
         ]);
 
         FuenteHumana::create([
