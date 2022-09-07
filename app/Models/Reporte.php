@@ -10,6 +10,7 @@ class Reporte extends Model
     use HasFactory;
     protected $table = "reportes";
     protected $fillable = [
+        "codigo",
         "asunto",
         "detalle",
         "user_create",

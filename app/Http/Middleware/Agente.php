@@ -16,7 +16,7 @@ class Agente
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->id_tipo_perfil == 1){
+        if (auth()->user()->id_tipo_perfil == 2 || auth()->user()->id_tipo_perfil == 1){
             return $next($request);
         }
         return abort(403);

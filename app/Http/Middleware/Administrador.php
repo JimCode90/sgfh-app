@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Informante
+class Administrador
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class Informante
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->id_tipo_perfil == 3  || auth()->user()->id_tipo_perfil == 1){
+        if (auth()->user()->id_tipo_perfil == 1){
             return $next($request);
         }
         return abort(403);

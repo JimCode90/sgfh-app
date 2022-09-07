@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TipoPerfilSeeder::class);
         $this->call(UserSeeder::class);
-         User::factory(10)->create();
+//         User::factory(10)->create();
 //         FuenteHumana::factory(20)->create();
 
     }

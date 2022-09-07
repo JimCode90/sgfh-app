@@ -15,6 +15,7 @@ class CreateReportesTable extends Migration
     {
         Schema::create('reportes', function (Blueprint $table) {
             $table->id();
+            $table->text('codigo');
             $table->string('asunto');
             $table->text('detalle');
             $table->string('imagen')->nullable();

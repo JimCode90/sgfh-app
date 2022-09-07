@@ -16,10 +16,15 @@ class TipoPerfilSeeder extends Seeder
     public function run()
     {
         TipoPerfil::create([
+            "descripcion" => "Administrador"
+        ]);
+
+        TipoPerfil::create([
             "descripcion" => "Agente"
         ]);
         TipoPerfil::create([
             "descripcion" => "Informante"
         ]);
+
     }
 }

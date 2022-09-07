@@ -24,10 +24,10 @@ class FuenteHumanaController extends Controller
     {
 
         $user = User::create([
-            "nombres" => $request->nombres,
-            "apellidos" => $request->apellidos,
+            "nombres" => strtoupper($request->nombres),
+            "apellidos" => strtoupper($request->apellidos),
             "dni" => $request->dni,
-            'id_tipo_perfil' => 2,
+            'id_tipo_perfil' => 3,
             "email" => $request->email,
             'password' => bcrypt('password'),
         ]);
@@ -36,13 +36,13 @@ class FuenteHumanaController extends Controller
             "user_id" => $user->id,
             "dni" => $request->dni,
             "nro_celular" => $request->nro_celular,
-            "nombres" => $request->nombres,
-            "apellidos" => $request->apellidos,
+            "nombres" => strtoupper($request->nombres),
+            "apellidos" => strtoupper($request->apellidos),
             "email" => $request->email,
             "codigo" => $request->codigo,
-            "direccion" => $request->direccion,
-            "area_criminal" => $request->area_criminal,
-            "ubigeo" => $request->ubigeo,
+            "direccion" => strtoupper($request->direccion),
+            "area_criminal" => strtoupper($request->area_criminal),
+            "ubigeo" => strtoupper($request->ubigeo),
             "user_create" => auth()->user()->id
         ]);
 
@@ -68,8 +68,8 @@ class FuenteHumanaController extends Controller
     public function procesaBuscarFuente(Request $request)
     {
         $fuentes = FuenteHumana::where('codigo', 'like', '%' . $request->codigo . '%')
-            ->where('area_criminal', 'like', '%' . $request->area . '%')
-            ->where('ubigeo', 'like', '%' . $request->ubigeo . '%')
+            ->where('area_criminal', 'like', '%' . strtoupper($request->area) . '%')
+            ->where('ubigeo', 'like', '%' . strtoupper($request->ubigeo) . '%')
             ->where("user_create", auth()->user()->id)
             ->get();
         return view('fuente-huamana.resultados-busqueda', compact("fuentes"));

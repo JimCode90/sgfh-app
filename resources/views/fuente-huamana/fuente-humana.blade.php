@@ -60,10 +60,10 @@
                             <div class="mt-4">
                                 <table class="table">
                                     <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th scope="col">#</th>
-                                        <th scope="col">Asunto</th>
-                                        <th scope="col">Detalle</th>
+                                        <th scope="col">Código</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -71,14 +71,20 @@
                                         $i = 1;
                                     @endphp
                                     @forelse($reportes as $reporte)
-                                    <tr>
-                                        <th scope="row">{{ $i++ }}</th>
-                                        <td>{{ $reporte->asunto }}</td>
-                                        <td>{{ $reporte->detalle }}</td>
-                                    </tr>
+                                        <tr>
+                                            <th class="text-center" scope="row">{{ $i++ }}</th>
+                                            <td class="text-center">{{ $reporte->codigo }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success" id="btn-abrir-reporte"
+                                                        data-codigo-reporte="{{ $reporte->codigo }}">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
                                     @empty
                                         <tr class="text-center">
-                                            <td colspan="3">LA FUENTE HUMANA SELECCIONADO NO REGISTRO NINGÚN REPORTE</td>
+                                            <td colspan="3">LA FUENTE HUMANA SELECCIONADO NO REGISTRO NINGÚN REPORTE
+                                            </td>
                                         </tr>
                                     @endforelse
                                     </tbody>
@@ -91,4 +97,32 @@
             </div>
         </div>
     </div>
+    @push("script_custom")
+        <script>
+
+            $(document).ready(function () {
+                const APP_URL = "{{ config('app.url') }}"
+
+                const btnAbrirReporte = $('#btn-abrir-reporte')
+
+                btnAbrirReporte.on("click", function () {
+                    const codigo = $(this).data("codigo-reporte")
+                    Swal.fire({
+                        title: 'Atención!!',
+                        text: "Estas a punto de abrir el reporte seleccionado, recuerda que esta acción esta haciendo auditada!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, Abrir Reporte!',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.open(`${APP_URL}/reporte/${codigo}`, '_blank')
+                        }
+                    })
+                })
+            });
+        </script>
+    @endpush
 @endsection
