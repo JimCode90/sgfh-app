@@ -100,30 +100,30 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 <script>
-    // function copyToClipboard() {
-    //     let aux = document.createElement("input");
-    //     aux.setAttribute("value", "Ya no puedes imprimir pantalla. Esto es parte de la nueva medida de seguridad del sistema.");
-    //     document.body.appendChild(aux);
-    //     aux.select();
-    //     document.execCommand("copy");
-    //     document.body.removeChild(aux);
-    //     alert("No tienes autorizaciòn para realizar esta acción.");
-    // }
-    //
-    // $(document).ready(function () {
-    //     $(window).keyup(function (e) {
-    //         if (e.keyCode == 44 || e.keyCode == 17) {
-    //             copyToClipboard();
-    //         }
-    //
-    //
-    //     });
-    //     $(window).focus(function () {
-    //         $("body").show();
-    //     }).blur(function () {
-    //         $("body").hide();
-    //     });
-    // });
+    function copyToClipboard() {
+        let aux = document.createElement("input");
+        aux.setAttribute("value", "Ya no puedes imprimir pantalla. Esto es parte de la nueva medida de seguridad del sistema.");
+        document.body.appendChild(aux);
+        aux.select();
+        document.execCommand("copy");
+        document.body.removeChild(aux);
+        alert("No tienes autorizaciòn para realizar esta acción.");
+    }
+
+    $(document).ready(function () {
+        $(window).keyup(function (e) {
+            if (e.keyCode == 44 || e.keyCode == 17) {
+                copyToClipboard();
+            }
+
+
+        });
+        $(window).focus(function () {
+            $("body").show();
+        }).blur(function () {
+            $("body").hide();
+        });
+    });
 </script>
 @stack("script_custom")
 </body>
