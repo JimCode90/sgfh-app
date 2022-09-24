@@ -75,7 +75,7 @@
                                             <th class="text-center" scope="row">{{ $i++ }}</th>
                                             <td class="text-center">{{ $reporte->codigo }}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-outline-success" id="btn-abrir-reporte"
+                                                <button class="btn btn-outline-success btn-abrir-reporte"
                                                         data-codigo-reporte="{{ $reporte->codigo }}">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </button>
@@ -103,7 +103,7 @@
             $(document).ready(function () {
                 const APP_URL = "{{ config('app.url') }}"
 
-                const btnAbrirReporte = $('#btn-abrir-reporte')
+                const btnAbrirReporte = $('.btn-abrir-reporte')
 
                 btnAbrirReporte.on("click", function () {
                     const codigo = $(this).data("codigo-reporte")
