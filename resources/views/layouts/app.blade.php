@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://rocky-chamber-48040.herokuapp.com/css/app.css" rel="stylesheet">
     @stack("styles_custom")
 </head>
 <body>
