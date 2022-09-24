@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Providers;
-use http\Env\Url;
-use Illuminate\Support\Facades\App;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,13 +21,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
-        if (!App::environment([
-            'local',
-            'testing',
-        ])) {
-            URL::forceScheme('https');
+        if(env('APP_ENV') !== 'local')
+        {
+            $url->forceSchema('https');
         }
     }
 }
